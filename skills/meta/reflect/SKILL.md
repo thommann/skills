@@ -42,7 +42,7 @@ For each signal, put it into a category:
 | Rule that a linter/formatter should enforce | Wire a hook; don't add prose |
 | Skill that fired wrongly / too often | Tighten the description's "Do NOT use for" clause |
 | Rule in `CLAUDE.md` that contradicts current behavior | Update or remove — stale guidance is worse than none |
-| Generic phrase that sneaked in | Remove it (see `validation/lib/generic-phrases.txt`) |
+| Generic phrase that sneaked in | Remove it. The `create-or-audit-claude-md` skill's validator catches the common ones. |
 
 ## Step 3: propose changes
 
@@ -69,28 +69,17 @@ Never edit `CLAUDE.md` or skills without the user's say-so. Present all proposed
 
 ## Step 5: re-validate
 
-For every file touched:
+For every file touched, re-run the artifact-specific audit skill so the mechanical gates pass:
 
-```bash
-# Changed CLAUDE.md
-bash validation/validate-claude-md.sh CLAUDE.md
+- Changed `CLAUDE.md` → run `create-or-audit-claude-md` (Mode 2)
+- Changed `SKILL.md` → run `create-or-audit-skill` (Mode 2)
+- Changed `*.sh` hook → run `create-or-audit-hook` (Mode 2)
 
-# Changed skill
-bash validation/validate-skill.sh .claude/skills/{name}/SKILL.md
-
-# Changed hook
-bash validation/validate-hook.sh .claude/hooks/{name}.sh
-```
-
-Validator failures are a regression. Fix before declaring reflection done.
+A validator regression after reflection means the reflection made things worse — fix before declaring done.
 
 ## Verify
 
-```bash
-# Every modified artifact passes its validator
-bash validation/validate-all.sh
-# Expected: all PASS
-```
+For each artifact you changed, the corresponding `create-or-audit-*` skill's Mode 2 audit reports `VERDICT: PASS`. If anything regressed, the reflection has not landed cleanly.
 
 ## Common Mistakes
 

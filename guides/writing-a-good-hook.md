@@ -150,7 +150,7 @@ Prefer specific matchers to reduce unnecessary invocations.
 
 ## Pre-ship checklist
 
-- [ ] `bash validation/validate-hook.sh <path>` exits 0.
+- [ ] `bash skills/meta/create-or-audit-hook/lib/validate.sh <path>` exits 0.
 - [ ] Shebang `#!/usr/bin/env bash` on line 1.
 - [ ] `set -euo pipefail` near the top.
 - [ ] Reads from stdin.

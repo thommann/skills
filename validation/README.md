@@ -90,7 +90,7 @@ Adopters can edit this file in their own project (add terms that signal low-effo
 
 ```bash
 # From the library repo
-LIB=~/.local/share/ai-augmented-se
+LIB=~/.local/share/skills
 PROJ=~/myproject
 
 for f in "$PROJ"/.claude/skills/*/SKILL.md; do

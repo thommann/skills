@@ -125,7 +125,7 @@ If the agent is portable, keep it portable — reference the project's `CLAUDE.m
 
 ## Pre-ship checklist
 
-- [ ] `bash validation/validate-agent.sh <path>` exits 0.
+- [ ] `bash skills/meta/create-or-audit-agent/lib/validate.sh <path>` exits 0.
 - [ ] Description has ≥3 trigger phrases and ≥1 "Do NOT use for."
 - [ ] `tools` restricted; no `Write`/`Edit` for reviewers.
 - [ ] Body has ≥3 backticked file references.

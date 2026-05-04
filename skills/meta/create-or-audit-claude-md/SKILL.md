@@ -16,9 +16,9 @@ Two modes, same skill: **Mode 1** writes a new `CLAUDE.md` by reading the codeba
 ## Before You Start
 
 - `principles/02-dense-not-brief.md` — the rule that drives `CLAUDE.md` length. Load-bearing, not pad.
-- `claude-md/templates/root.md.template` — the annotated root skeleton with required sections.
-- `claude-md/templates/subdirectory.md.template` — the subdir skeleton + the four trigger criteria.
-- `validation/validate-claude-md.sh` — the mechanical gate.
+- `skills/meta/create-or-audit-claude-md/templates/CLAUDE.md` — the annotated root skeleton with required sections.
+- `skills/meta/create-or-audit-claude-md/templates/CLAUDE.subdir.md` — the subdir skeleton + the four trigger criteria.
+- `skills/meta/create-or-audit-claude-md/lib/validate.sh` — the mechanical gate.
 
 ## Mode 1 — create a CLAUDE.md
 
@@ -67,7 +67,7 @@ grep -rniE 'DO NOT|DANGER|CAREFUL|WARNING|HACK|FIXME|TODO' --include='*.py' --in
 
 ### Step 4: write the file using `root.md.template`
 
-Copy `claude-md/templates/root.md.template` and fill in every section. Keep the section order from the template — agents rely on it.
+Copy `skills/meta/create-or-audit-claude-md/templates/CLAUDE.md` and fill in every section. Keep the section order from the template — agents rely on it.
 
 Special discipline for each section:
 
@@ -79,7 +79,7 @@ Special discipline for each section:
 
 ### Step 5: create subdirectory CLAUDE.md files
 
-A subdirectory gets its own `CLAUDE.md` when ANY of the four criteria holds (`claude-md/README.md` enumerates them): different language/framework, 3+ divergent patterns, own build commands, 10+ files with distinct conventions.
+A subdirectory gets its own `CLAUDE.md` when ANY of the four criteria holds (`skills/meta/create-or-audit-claude-md/SKILL.md` enumerates them): different language/framework, 3+ divergent patterns, own build commands, 10+ files with distinct conventions.
 
 Each must be **self-contained** — a developer working in that directory should not need to flip back to root.
 
@@ -88,7 +88,7 @@ Each must be **self-contained** — a developer working in that directory should
 ### Step 1: run the validator
 
 ```bash
-bash validation/validate-claude-md.sh CLAUDE.md
+bash skills/meta/create-or-audit-claude-md/lib/validate.sh CLAUDE.md
 ```
 
 Fix errors before continuing.
@@ -139,7 +139,7 @@ done
 
 ```bash
 # Validator passes
-bash validation/validate-claude-md.sh CLAUDE.md
+bash skills/meta/create-or-audit-claude-md/lib/validate.sh CLAUDE.md
 # Expected: VERDICT: PASS
 
 # No stale file references
@@ -157,3 +157,10 @@ done
 | Embedding a 30-line code snippet | Reference the file (principle 04): `` `src/api/routes.ts` — see this for the pattern. `` |
 | Restating every linter rule | Point at the tool (`.eslintrc.json`, `ruff.toml`) and document only the non-obvious rules. |
 | "Don't use `x`" with no alternative | Pair with "Use `y` instead, defined in `src/lib/y.ts`." Validator errors without this. |
+
+## What doesn't belong in CLAUDE.md
+
+- **Rules already enforced by tooling.** If ESLint catches it, don't restate it (principle 03).
+- **Temporary state.** Current sprint goals, "in-progress" features. That's issue-tracker territory.
+- **Long tutorials.** If a walkthrough is >20 lines, it's a skill, not ambient context.
+- **Embedded code snippets over 10 lines.** They rot. Reference the file instead (principle 04).

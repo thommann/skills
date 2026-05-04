@@ -60,6 +60,6 @@ Treats phrases inside backticks or double quotes as mentions (pedagogical), not 
 ## References
 
 - [`../validation/README.md`](../validation/README.md) — full rule enumeration.
-- [`../validation/validate-skill.sh`](../validation/validate-skill.sh), [`../validation/validate-agent.sh`](../validation/validate-agent.sh), [`../validation/validate-hook.sh`](../validation/validate-hook.sh), [`../validation/validate-claude-md.sh`](../validation/validate-claude-md.sh) — the port targets.
-- [`../validation/lib/generic-phrases.txt`](../validation/lib/generic-phrases.txt) — the rejection list.
+- [`../skills/meta/create-or-audit-skill/lib/validate.sh`](../skills/meta/create-or-audit-skill/lib/validate.sh), [`../skills/meta/create-or-audit-agent/lib/validate.sh`](../skills/meta/create-or-audit-agent/lib/validate.sh), [`../skills/meta/create-or-audit-hook/lib/validate.sh`](../skills/meta/create-or-audit-hook/lib/validate.sh), [`../skills/meta/create-or-audit-claude-md/lib/validate.sh`](../skills/meta/create-or-audit-claude-md/lib/validate.sh) — the port targets.
+- [`../skills/meta/create-or-audit-skill/lib/generic-phrases.txt`](../skills/meta/create-or-audit-skill/lib/generic-phrases.txt) — the rejection list.
 - [`../principles/`](../principles/) — the seven principles these validators enforce.

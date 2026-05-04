@@ -20,7 +20,7 @@ Take note of:
 ### Hooks
 
 ```bash
-LIB=~/.local/share/ai-augmented-se
+LIB=~/.local/share/skills
 for h in "$LIB/hooks/examples/"*.sh; do
   name=$(basename "$h")
   if [[ -e ".claude/hooks/$name" ]]; then
@@ -95,7 +95,7 @@ fi
 After merging, run:
 
 ```bash
-bash "$LIB/validation/validate-claude-md.sh" CLAUDE.md
+bash "$LIB/skills/meta/create-or-audit-claude-md/lib/validate.sh" CLAUDE.md
 ```
 
 ## Array-merge conflict (hooks wiring)
@@ -130,17 +130,17 @@ Example combined PostToolUse:
 ## Validate after adoption
 
 ```bash
-LIB=~/.local/share/ai-augmented-se
+LIB=~/.local/share/skills
 for f in .claude/skills/*/SKILL.md; do
-  bash "$LIB/validation/validate-skill.sh" "$f"
+  bash "$LIB/skills/meta/create-or-audit-skill/lib/validate.sh" "$f"
 done
 for f in .claude/agents/*.md; do
-  bash "$LIB/validation/validate-agent.sh" "$f"
+  bash "$LIB/skills/meta/create-or-audit-agent/lib/validate.sh" "$f"
 done
 for f in .claude/hooks/*.sh; do
-  bash "$LIB/validation/validate-hook.sh" "$f"
+  bash "$LIB/skills/meta/create-or-audit-hook/lib/validate.sh" "$f"
 done
-bash "$LIB/validation/validate-claude-md.sh" CLAUDE.md
+bash "$LIB/skills/meta/create-or-audit-claude-md/lib/validate.sh" CLAUDE.md
 ```
 
 Scaffolding / debugging / reference skills that still contain `{{PLACEHOLDERS}}` will fail — that's expected. Adapt them to your project (see each example's "Adapt to your project" block) before validating.
@@ -154,7 +154,7 @@ git add CLAUDE.md
 git status
 
 # Commit with a message that identifies where artifacts came from
-git commit -m "chore: adopt ai-augmented-se artifacts (review, reflect, format hooks)"
+git commit -m "chore: adopt skills library artifacts (review, reflect, format hooks)"
 ```
 
 ## Roll back

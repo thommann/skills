@@ -2,7 +2,7 @@
 # validate-hook.sh — Quality check for a Claude Code hook .sh file.
 # Adapted from the validate_hook function in
 #   https://github.com/joelbarmettlerUZH/ultrainit.sh/blob/main/lib/validate.sh
-# Usage: bash validation/validate-hook.sh path/to/hook.sh
+# Usage: bash skills/meta/create-or-audit-hook/lib/validate.sh path/to/hook.sh
 set -euo pipefail
 
 HOOK_PATH="${1:?Usage: validate-hook.sh <path-to-hook.sh>}"

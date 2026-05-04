@@ -5,7 +5,7 @@ allowed-tools: Read, Grep, Glob, Bash
 ---
 
 <!--
-  Frontmatter rules (enforced by validation/validate-skill.sh):
+  Frontmatter rules (enforced by skills/meta/create-or-audit-skill/lib/validate.sh):
     - name: kebab-case, must match the folder name.
     - description: ≥3 trigger phrases in natural language; ≥1 "Do NOT use for" negative scope;
       NO angle brackets (breaks YAML); under 1024 characters total.
@@ -14,7 +14,7 @@ allowed-tools: Read, Grep, Glob, Bash
   Body rules:
     - ≥3 backtick-wrapped file references somewhere in this file.
     - Must include "## Before You Start", numbered steps, "## Verify", "## Common Mistakes".
-    - No banned generic phrases (see validation/lib/generic-phrases.txt).
+    - No banned generic phrases (see skills/meta/create-or-audit-skill/lib/generic-phrases.txt).
     - Every prohibition must come with an alternative in the same section (principle 05).
 -->
 

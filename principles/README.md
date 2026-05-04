@@ -1,6 +1,6 @@
 # Principles
 
-Seven normative docs. Every artifact in this library cites at least one. Validators in `../validation/` mechanically enforce the rules where possible; the rest is human review.
+Seven normative docs. Every artifact in this library cites at least one. Validators in `validation/` mechanically enforce the rules where possible; the rest is human review.
 
 | # | Principle | One-line |
 |---|---|---|
@@ -24,4 +24,4 @@ Seven normative docs. Every artifact in this library cites at least one. Validat
 
 ## The generic-phrase ban
 
-All principles together reject nine phrases as signal-free: `best practice`, `clean code`, `SOLID principles`, `maintainable`, `readable`, `scalable`, `well-structured`, `production-ready`, `industry standard`. The rejection list lives in `../validation/lib/generic-phrases.txt` and is grep-enforced.
+All principles together reject nine phrases as signal-free: `best practice`, `clean code`, `SOLID principles`, `maintainable`, `readable`, `scalable`, `well-structured`, `production-ready`, `industry standard`. The rejection list lives in `skills/meta/create-or-audit-skill/lib/generic-phrases.txt` and is grep-enforced.

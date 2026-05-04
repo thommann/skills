@@ -18,7 +18,7 @@ maxTurns: 25
 ---
 ```
 
-Rules (enforced by `../validation/validate-agent.sh`):
+Rules (enforced by `skills/meta/create-or-audit-agent/lib/validate.sh`):
 
 - `name` is lowercase with hyphens, matches filename.
 - `description` has ≥3 trigger phrases, ≥1 negative scope, no angle brackets, under 1024 chars.
@@ -49,8 +49,8 @@ See [`../guides/when-to-create-what.md`](../guides/when-to-create-what.md) for t
 ## Validation
 
 ```bash
-bash ../validation/validate-agent.sh examples/code-reviewer.md
-for f in examples/*.md; do bash ../validation/validate-agent.sh "$f" || exit 1; done
+bash skills/meta/create-or-audit-agent/lib/validate.sh examples/code-reviewer.md
+for f in examples/*.md; do bash skills/meta/create-or-audit-agent/lib/validate.sh "$f" || exit 1; done
 ```
 
 ## Included examples

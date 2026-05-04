@@ -15,7 +15,7 @@ Skipping step 4 is the most common mistake. A guess-fix without a minimal repro 
 
 ## Contents
 
-- [`TEMPLATE/SKILL.md`](TEMPLATE/SKILL.md) — annotated parameterized skeleton.
+- [`TEMPLATE.md`](TEMPLATE.md) — annotated parameterized skeleton.
 - [`examples/debug-backend.md`](examples/debug-backend.md) — structured logs, stack traces, request IDs, cross-service correlation.
 - [`examples/debug-frontend.md`](examples/debug-frontend.md) — browser devtools, network tab, source maps, Playwright.
 - [`examples/debug-database.md`](examples/debug-database.md) — slow queries, migration failures, connection pool exhaustion, locks.
@@ -40,7 +40,7 @@ Only ~20% of each example needs replacement. The structure and the discipline ap
 Debugging examples use backticked placeholder conventions, so they pass `validate-skill.sh` as shipped. After adaptation, they should still pass.
 
 ```bash
-bash validation/validate-skill.sh .claude/skills/debugging/debug-backend/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh .claude/skills/debugging/debug-backend/SKILL.md
 ```
 
 ## When NOT to write a debugging skill

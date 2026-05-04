@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # validate-skill.sh — Quality check for a SKILL.md file.
 # Adapted from https://github.com/joelbarmettlerUZH/ultrainit.sh/blob/main/scripts/validate-skill.sh
-# Usage: bash validation/validate-skill.sh path/to/SKILL.md
+# Usage: bash skills/meta/create-or-audit-skill/lib/validate.sh path/to/SKILL.md
 set -euo pipefail
 
 SKILL_PATH="${1:?Usage: validate-skill.sh <path-to-SKILL.md>}"
@@ -9,7 +9,7 @@ ERRORS=0
 WARNINGS=0
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/lib/generic-phrases.txt}"
+GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/generic-phrases.txt}"
 
 if [ ! -f "$SKILL_PATH" ]; then
   echo "ERROR: File not found: $SKILL_PATH" >&2

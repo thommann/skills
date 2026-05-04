@@ -14,11 +14,9 @@ Hooks are deterministic gates bash-scripted against Claude Code events. Use them
 
 ## Before You Start
 
-- `hooks/README.md` — event taxonomy (`PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`), exit-code semantics, and design rules.
-- `hooks/TEMPLATE.sh` — annotated blank hook with stdin parsing, dispatch, and exit-code examples.
-- `hooks/examples/protect-sensitive-files.sh` — canonical `PreToolUse` blocker.
-- `hooks/examples/auto-format-python.sh` — canonical `PostToolUse` formatter with tool-presence check.
-- `validation/validate-hook.sh` — mechanical checks (shebang, pipefail, stdin read, stderr-when-blocking).
+- `skills/meta/create-or-audit-hook/templates/hook.sh` — annotated blank hook with stdin parsing, dispatch, and exit-code examples.
+- `skills/meta/create-or-audit-hook/lib/validate.sh` — mechanical checks (shebang, pipefail, stdin read, stderr-when-blocking).
+- Event taxonomy: `PreToolUse` (block before tool runs), `PostToolUse` (act after tool runs), `Stop` (gate session end), `SessionStart` (warm caches). Exit codes: `0` allow, `2` block + stderr message.
 
 ## Mode 1 — build a new hook
 
@@ -37,13 +35,13 @@ If the rule isn't deterministic (requires judgment), it's not a hook — it's a 
 ### Step 2: copy the template
 
 ```bash
-cp .claude/hooks/TEMPLATE.sh .claude/hooks/{hook-name}.sh
+cp .claude/skills/meta/create-or-audit-hook/templates/hook.sh .claude/hooks/{hook-name}.sh
 chmod +x .claude/hooks/{hook-name}.sh
 ```
 
 ### Step 3: fill in the logic
 
-Enforce these rules from `hooks/README.md`:
+Enforce these rules:
 
 - `#!/usr/bin/env bash` + `set -euo pipefail` at the top.
 - Read JSON from stdin: `input=$(cat)`.
@@ -71,7 +69,7 @@ Without wiring, the hook file exists but never runs — the #1 cause of "my hook
 ### Step 5: run the validator
 
 ```bash
-bash validation/validate-hook.sh .claude/hooks/{hook-name}.sh
+bash skills/meta/create-or-audit-hook/lib/validate.sh .claude/hooks/{hook-name}.sh
 ```
 
 ### Step 6: dry-run
@@ -90,7 +88,7 @@ Confirm: relevant input acts; irrelevant input (wrong tool, wrong filetype) exit
 ```bash
 for f in .claude/hooks/*.sh; do
   echo "=== $f ==="
-  bash validation/validate-hook.sh "$f" | tail -5
+  bash skills/meta/create-or-audit-hook/lib/validate.sh "$f" | tail -5
 done
 ```
 
@@ -138,7 +136,7 @@ comm -13 /tmp/exists.txt /tmp/wired.txt    # wirings that point to missing hooks
 ## Verify
 
 ```bash
-bash validation/validate-hook.sh .claude/hooks/{name}.sh
+bash skills/meta/create-or-audit-hook/lib/validate.sh .claude/hooks/{name}.sh
 # Expected: VERDICT: PASS
 
 # Dry-run with a representative payload

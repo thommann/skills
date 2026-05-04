@@ -85,11 +85,11 @@ Reasons a skill grows too big:
 
 Before declaring a skill ready:
 
-- [ ] `bash validation/validate-skill.sh <path>` exits 0.
+- [ ] `bash skills/meta/create-or-audit-skill/lib/validate.sh <path>` exits 0.
 - [ ] Description has ≥3 trigger phrases and ≥1 "Do NOT use for."
 - [ ] Body has ≥3 backticked file references.
 - [ ] Has `## Before You Start`, numbered steps, `## Verify`, `## Common Mistakes`.
-- [ ] No banned generic phrases in prose (`validation/lib/generic-phrases.txt`).
+- [ ] No banned generic phrases in prose (`skills/meta/create-or-audit-skill/lib/generic-phrases.txt`).
 - [ ] Every prohibition has a matching alternative nearby (principle 05).
 - [ ] Imagined "trigger test": if a user said "<trigger phrase from description>", would this skill be the right answer?
 - [ ] Imagined "negative test": if a user said something adjacent, would this skill wrongly trigger?
@@ -98,7 +98,7 @@ Before declaring a skill ready:
 
 Skills decay. Re-validate quarterly:
 
-- `find .claude/skills -name 'SKILL.md' | xargs -n1 bash validation/validate-skill.sh`
+- `find .claude/skills -name 'SKILL.md' | xargs -n1 bash skills/meta/create-or-audit-skill/lib/validate.sh`
 - Grep the stale-path scan from `create-or-audit-skill` Gate 4.
 - Ask "does this still match how we actually work?" — if the project's procedure changed, update the skill.
 

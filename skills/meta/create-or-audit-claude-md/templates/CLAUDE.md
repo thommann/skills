@@ -3,7 +3,7 @@
 <!--
   ROOT CLAUDE.md template.
 
-  Required sections (enforced by validation/validate-claude-md.sh):
+  Required sections (enforced by skills/meta/create-or-audit-claude-md/lib/validate.sh):
     1. # Project title + one-line description
     2. ## Quick Reference   — task→command table
     3. ## Architecture      — the longest section: Overview, Directory Structure, Subsystems, Key Abstractions
@@ -14,7 +14,7 @@
     8. ## Domain Terminology
 
   Quality gates:
-    - No banned generic phrases (see ../../validation/lib/generic-phrases.txt).
+    - No banned generic phrases (see ../../skills/meta/create-or-audit-skill/lib/generic-phrases.txt).
     - Every prohibition must include an alternative in the same section (principle 05).
     - At least one code block or pipe table — prose-only CLAUDE.md is rejected.
     - Minimum ~100 lines of load-bearing content. Under 50 lines = warning, under 30 = error.

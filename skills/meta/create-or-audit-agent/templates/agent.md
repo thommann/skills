@@ -11,7 +11,7 @@ maxTurns: 25
 ---
 
 <!--
-  Frontmatter rules (enforced by validation/validate-agent.sh):
+  Frontmatter rules (enforced by skills/meta/create-or-audit-agent/lib/validate.sh):
     - name: lowercase-with-hyphens, must match filename.
     - description: ≥3 trigger phrases; ≥1 negative scope; NO angle brackets; under 1024 chars.
     - tools: principle of least privilege. For a read-only agent (review/analyze/audit/scan/check),

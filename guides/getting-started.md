@@ -5,7 +5,7 @@ Adopt this library in your project in ~15 minutes.
 ## 1. Clone the library
 
 ```bash
-git clone https://github.com/<your-fork>/ai-augmented-software-engineering ~/.local/share/ai-augmented-se
+git clone https://github.com/thommann/skills ~/.local/share/skills
 ```
 
 ## 2. Pick artifacts
@@ -20,7 +20,7 @@ mkdir -p .claude/hooks .claude/skills
 ### Hooks (3 recommended to start)
 
 ```bash
-LIB=~/.local/share/ai-augmented-se
+LIB=~/.local/share/skills
 
 cp "$LIB/hooks/examples/protect-sensitive-files.sh" .claude/hooks/
 cp "$LIB/hooks/examples/auto-format-markdown.sh"    .claude/hooks/
@@ -42,7 +42,7 @@ cp -rn "$LIB/skills/meta/reflect"                     .claude/skills/
 ### CLAUDE.md
 
 ```bash
-[ -f CLAUDE.md ] || cp "$LIB/claude-md/templates/root.md.template" CLAUDE.md
+[ -f CLAUDE.md ] || cp "$LIB/skills/meta/create-or-audit-claude-md/templates/CLAUDE.md" CLAUDE.md
 # Now edit CLAUDE.md — fill in Quick Reference, Architecture, Things to Know.
 ```
 
@@ -61,10 +61,10 @@ fi
 ## 3. Validate
 
 ```bash
-LIB=~/.local/share/ai-augmented-se
-bash "$LIB/validation/validate-claude-md.sh" CLAUDE.md
-for f in .claude/skills/*/SKILL.md; do bash "$LIB/validation/validate-skill.sh" "$f"; done
-for f in .claude/hooks/*.sh;        do bash "$LIB/validation/validate-hook.sh"  "$f"; done
+LIB=~/.local/share/skills
+bash "$LIB/skills/meta/create-or-audit-claude-md/lib/validate.sh" CLAUDE.md
+for f in .claude/skills/*/SKILL.md; do bash "$LIB/skills/meta/create-or-audit-skill/lib/validate.sh" "$f"; done
+for f in .claude/hooks/*.sh;        do bash "$LIB/skills/meta/create-or-audit-hook/lib/validate.sh"  "$f"; done
 ```
 
 Fix any errors before using. The `CLAUDE.md` validator is the most opinionated — you may need to remove generic phrases or add a prohibition's alternative.
@@ -81,10 +81,10 @@ Open the project in Claude Code. Test:
 
 Add more as you find friction:
 
-- A scaffolding skill (start with `skills/scaffolding/examples/` and adapt to your project).
+- A scaffolding skill (start with `guides/scaffolding-examples/` and adapt to your project).
 - An agent (`agents/examples/security-reviewer.md`) for bounded review tasks.
 - MCP servers (`mcp/mcp.json.examples/` or `mcp/launchers/`).
-- A reference skill encoding a project-specific pattern (`skills/reference/examples/`).
+- A reference skill encoding a project-specific pattern (`guides/reference-examples/`).
 
 ## Troubleshooting
 

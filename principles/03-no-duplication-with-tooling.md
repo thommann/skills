@@ -27,7 +27,7 @@ Prose should NOT restate:
 
 No automated validator catches this — it's human review. During review, ask: *"Is a tool already enforcing this? If yes, is the prose adding the **what**/**why**/**override**, or is it duplicating the rule?"* If the latter, delete the prose.
 
-The generic-phrase ban (`validation/lib/generic-phrases.txt`) catches some symptoms (e.g., "readable code" often accompanies duplicated lint rules).
+The generic-phrase ban (`skills/meta/create-or-audit-skill/lib/generic-phrases.txt`) catches some symptoms (e.g., "readable code" often accompanies duplicated lint rules).
 
 ## Good vs bad
 

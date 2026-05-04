@@ -15,7 +15,7 @@ What this library can ship: the **shape** of a good reference skill. Examples ar
 
 ## Contents
 
-- [`TEMPLATE/SKILL.md`](TEMPLATE/SKILL.md) — annotated parameterized skeleton.
+- [`TEMPLATE.md`](TEMPLATE.md) — annotated parameterized skeleton.
 - [`examples/framework-patterns.md`](examples/framework-patterns.md) — "how we use {framework}" pattern.
 - [`examples/auth-reference.md`](examples/auth-reference.md) — identity, sessions, permission checks.
 - [`examples/state-management.md`](examples/state-management.md) — client-side store OR server-side state layering.
@@ -40,7 +40,7 @@ Reference skills start out thin and grow as the project learns. A 100-line `auth
 Reference examples use backticked placeholder references, so they pass `validate-skill.sh` as shipped. After substitution they should still pass.
 
 ```bash
-bash validation/validate-skill.sh .claude/skills/reference/auth-reference/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh .claude/skills/reference/auth-reference/SKILL.md
 ```
 
 ## When NOT to write a reference skill

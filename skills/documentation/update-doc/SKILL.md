@@ -116,7 +116,6 @@ If this PR fixed or changed a documented gotcha in `CLAUDE.md`:
 Validate after:
 
 ```bash
-bash validation/validate-claude-md.sh CLAUDE.md
 ```
 
 ## Verify

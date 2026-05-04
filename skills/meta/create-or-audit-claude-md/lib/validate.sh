@@ -2,7 +2,7 @@
 # validate-claude-md.sh — Quality check for a CLAUDE.md file.
 # Adapted from the validate_claude_md function in
 #   https://github.com/joelbarmettlerUZH/ultrainit.sh/blob/main/lib/validate.sh
-# Usage: bash validation/validate-claude-md.sh path/to/CLAUDE.md
+# Usage: bash skills/meta/create-or-audit-claude-md/lib/validate.sh path/to/CLAUDE.md
 set -euo pipefail
 
 CLAUDE_PATH="${1:?Usage: validate-claude-md.sh <path-to-CLAUDE.md>}"
@@ -10,7 +10,7 @@ ERRORS=0
 WARNINGS=0
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/lib/generic-phrases.txt}"
+GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/generic-phrases.txt}"
 
 if [ ! -f "$CLAUDE_PATH" ]; then
   echo "ERROR: File not found: $CLAUDE_PATH" >&2

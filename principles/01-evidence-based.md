@@ -26,7 +26,7 @@ Opinion-shaped language without a citation is removed. Examples that fail the ru
 
 - `validate-skill.sh` counts backtick-wrapped path-like strings (matches `/`, well-known dirs `src|packages|apps|...`, and file extensions). **<3 references → hard error** ("Skill is too generic").
 - `validate-claude-md.sh` requires ≥1 code block or pipe-table. A CLAUDE.md with zero commands and zero file paths fails.
-- The generic-phrase grep (`validation/lib/generic-phrases.txt`) runs against every artifact.
+- The generic-phrase grep (`skills/meta/create-or-audit-skill/lib/generic-phrases.txt`) runs against every artifact.
 
 ## Good vs bad
 

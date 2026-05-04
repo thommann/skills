@@ -19,7 +19,7 @@ Everything else is a skill.
 
 Hooks are wired in `settings.json` under `hooks.<Event>[].hooks[].command`.
 
-## Schema (enforced by `../validation/validate-hook.sh`)
+## Schema (enforced by `skills/meta/create-or-audit-hook/lib/validate.sh`)
 
 Every hook MUST:
 
@@ -45,7 +45,7 @@ Claude Code passes a JSON object on stdin. Common fields:
 }
 ```
 
-Extract fields with `jq`. See [`TEMPLATE.sh`](TEMPLATE.sh) for the canonical parse-and-dispatch shape.
+Extract fields with `jq`. See [the meta hook template](../skills/meta/create-or-audit-hook/templates/hook.sh) for the canonical parse-and-dispatch shape.
 
 ## Exit codes
 
@@ -84,6 +84,6 @@ Extract fields with `jq`. See [`TEMPLATE.sh`](TEMPLATE.sh) for the canonical par
 ## Validation
 
 ```bash
-bash ../validation/validate-hook.sh examples/protect-sensitive-files.sh
-for f in examples/*.sh; do bash ../validation/validate-hook.sh "$f" || exit 1; done
+bash skills/meta/create-or-audit-hook/lib/validate.sh examples/protect-sensitive-files.sh
+for f in examples/*.sh; do bash skills/meta/create-or-audit-hook/lib/validate.sh "$f" || exit 1; done
 ```

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # validate-agent.sh — Quality check for a subagent .md file.
 # Adapted from https://github.com/joelbarmettlerUZH/ultrainit.sh/blob/main/scripts/validate-subagent.sh
-# Usage: bash validation/validate-agent.sh path/to/agent.md
+# Usage: bash skills/meta/create-or-audit-agent/lib/validate.sh path/to/agent.md
 set -euo pipefail
 
 AGENT_PATH="${1:?Usage: validate-agent.sh <path-to-agent.md>}"
@@ -9,7 +9,7 @@ ERRORS=0
 WARNINGS=0
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/lib/generic-phrases.txt}"
+GENERIC_PHRASES_FILE="${GENERIC_PHRASES_FILE:-$SCRIPT_DIR/generic-phrases.txt}"
 
 if [ ! -f "$AGENT_PATH" ]; then
   echo "ERROR: File not found: $AGENT_PATH" >&2

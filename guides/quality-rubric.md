@@ -1,6 +1,6 @@
 # Quality rubric
 
-The validators in `validation/` enforce mechanical rules. This rubric documents those same rules plus the non-mechanical ones in prose — useful for human review.
+The validators under each `skills/meta/create-or-audit-*/lib/` directory (orchestrated by `validation/validate-all.sh`) enforce mechanical rules. This rubric documents those same rules plus the non-mechanical ones in prose — useful for human review.
 
 ## Skill
 
@@ -19,7 +19,7 @@ The validators in `validation/` enforce mechanical rules. This rubric documents 
 - [ ] Has `## Verify` section with concrete commands.
 - [ ] Has `## Common Mistakes` with 2–4 real pitfalls.
 - [ ] Under 600 lines (over 600 warns — consider splitting).
-- [ ] Fewer than 3 generic-phrase matches (see `validation/lib/generic-phrases.txt`).
+- [ ] Fewer than 3 generic-phrase matches (see `skills/meta/create-or-audit-skill/lib/generic-phrases.txt`).
 
 ### Human-review requirements
 
@@ -120,13 +120,13 @@ Run periodically:
 
 ```bash
 cd .claude/
-LIB=~/.local/share/ai-augmented-se
+LIB=~/.local/share/skills
 
 # Validation (mechanical)
-for f in skills/*/SKILL.md; do bash "$LIB/validation/validate-skill.sh" "$f"; done
-for f in agents/*.md;       do bash "$LIB/validation/validate-agent.sh" "$f"; done
-for f in hooks/*.sh;        do bash "$LIB/validation/validate-hook.sh"  "$f"; done
-bash "$LIB/validation/validate-claude-md.sh" ../CLAUDE.md
+for f in skills/*/SKILL.md; do bash "$LIB/skills/meta/create-or-audit-skill/lib/validate.sh" "$f"; done
+for f in agents/*.md;       do bash "$LIB/skills/meta/create-or-audit-agent/lib/validate.sh" "$f"; done
+for f in hooks/*.sh;        do bash "$LIB/skills/meta/create-or-audit-hook/lib/validate.sh"  "$f"; done
+bash "$LIB/skills/meta/create-or-audit-claude-md/lib/validate.sh" ../CLAUDE.md
 
 # Stale reference scan (human review)
 find .claude -type f -name '*.md' -o -name '*.sh' | xargs grep -l "TODO\|FIXME" 2>/dev/null

@@ -16,7 +16,7 @@ A scaffolding skill missing step 3 (wiring) is the most common failure mode.
 
 ## Contents
 
-- [`TEMPLATE/SKILL.md`](TEMPLATE/SKILL.md) — annotated parameterized skeleton.
+- [`TEMPLATE.md`](TEMPLATE.md) — annotated parameterized skeleton.
 - [`examples/add-api-endpoint.md`](examples/add-api-endpoint.md) — backend route + controller + service pattern.
 - [`examples/add-data-model.md`](examples/add-data-model.md) — ORM model + migration pattern.
 - [`examples/add-service.md`](examples/add-service.md) — business-logic layer between controllers and repositories.
@@ -38,7 +38,7 @@ Every example has an "Adapt to your project" block at the top listing placeholde
 | `{{NAMING}}` | Your naming rule — "kebab-case file names", "PascalCase classes", ... |
 | `{{ENTITY_NAME}}` | The thing being added — `User`, `Order`, `Subscription`, ... |
 
-Do the substitution once per placeholder (find-and-replace). Remove the "Adapt to your project" block after substitution. Run `validation/validate-skill.sh` on the result — if it still fails the ≥3 file-reference rule, add 2–3 real file paths to your body.
+Do the substitution once per placeholder (find-and-replace). Remove the "Adapt to your project" block after substitution. Run `skills/meta/create-or-audit-skill/lib/validate.sh` on the result — if it still fails the ≥3 file-reference rule, add 2–3 real file paths to your body.
 
 ## Validation
 
@@ -47,7 +47,7 @@ These examples will NOT pass `validate-skill.sh` cleanly as shipped — they con
 To validate an adapted scaffolding skill:
 
 ```bash
-bash validation/validate-skill.sh .claude/skills/scaffolding/add-api-endpoint/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh .claude/skills/scaffolding/add-api-endpoint/SKILL.md
 ```
 
 ## When NOT to write a scaffolding skill

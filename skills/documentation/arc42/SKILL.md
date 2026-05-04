@@ -97,7 +97,6 @@ Ask: what is the user asking for, or what did this PR change?
 The root `CLAUDE.md` "Architecture" section is a condensed summary of arc42 chapters 3–5. When you edit those chapters substantially, re-scan `CLAUDE.md` for drift:
 
 ```bash
-bash validation/validate-claude-md.sh CLAUDE.md
 ```
 
 ## Verify

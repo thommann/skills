@@ -11,14 +11,14 @@ allowed-tools: Read, Grep, Glob, Bash, Write, Edit
 
 # Create or audit a skill
 
-Two modes, same skill: **Mode 1** writes a new skill by discovering the pattern already used in the codebase and encoding it. **Mode 2** reviews an existing or proposed `SKILL.md` against the principles and the `validation/validate-skill.sh` quality gates.
+Two modes, same skill: **Mode 1** writes a new skill by discovering the pattern already used in the codebase and encoding it. **Mode 2** reviews an existing or proposed `SKILL.md` against the principles and the `skills/meta/create-or-audit-skill/lib/validate.sh` quality gates.
 
 ## Before You Start
 
 - `principles/06-portability-test.md` — the core rule: a skill belongs in a project's `.claude/skills/` only if it would **fail** in an unrelated project. If it works unchanged elsewhere, it's generic and does not belong there.
-- `skills/TEMPLATE/SKILL.md` — annotated blank skeleton with comments explaining every field.
-- `skills/README.md` — the seven-category taxonomy (meta, workflow, documentation, planning, scaffolding, debugging, reference).
-- `validation/validate-skill.sh` — the authoritative structural checks. Run this BEFORE any content review.
+- `skills/meta/create-or-audit-skill/templates/skill.md` — annotated blank skeleton with comments explaining every field.
+- Categories used in this library: `meta/`, `workflow/`, `documentation/`, `planning/`. Project-specific starter kits (scaffolding, debugging, reference) live under `guides/` since they need codebase-specific adaptation.
+- `skills/meta/create-or-audit-skill/lib/validate.sh` — the authoritative structural checks. Run this BEFORE any content review.
 
 ## Mode 1 — build a new skill
 
@@ -58,7 +58,7 @@ Read 2–3 real examples. Note: files created/modified, exact verification comma
 
 ### Step 3: write the skill
 
-Copy `skills/TEMPLATE/SKILL.md` and fill in. The description is load-bearing:
+Copy `skills/meta/create-or-audit-skill/templates/skill.md` and fill in. The description is load-bearing:
 
 - Include **what it does**, referencing specific parts of this codebase.
 - **≥3 trigger phrases** in natural language engineers actually say.
@@ -75,7 +75,7 @@ The body:
 ### Step 4: run the validator
 
 ```bash
-bash validation/validate-skill.sh .claude/skills/{skill-name}/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh .claude/skills/{skill-name}/SKILL.md
 ```
 
 Fix every error and warning before presenting to the user.
@@ -91,7 +91,7 @@ Fix every error and warning before presenting to the user.
 ### Step 1: structural check first
 
 ```bash
-bash validation/validate-skill.sh path/to/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh path/to/SKILL.md
 ```
 
 If this exits 1, stop and report. No point reviewing content if the skeleton is broken.
@@ -153,7 +153,7 @@ done
 Run the validator against the produced or audited skill:
 
 ```bash
-bash validation/validate-skill.sh path/to/SKILL.md
+bash skills/meta/create-or-audit-skill/lib/validate.sh path/to/SKILL.md
 ```
 
 Expected: `VERDICT: PASS`. Fix errors until it does.

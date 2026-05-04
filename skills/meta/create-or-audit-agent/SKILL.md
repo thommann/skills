@@ -14,10 +14,9 @@ Subagents are isolated, read-only (by default) contexts for bounded analysis tas
 
 ## Before You Start
 
-- `agents/README.md` — the schema, read-only enforcement rules, and when-to-use-agent-vs-skill decision table.
-- `agents/TEMPLATE.md` — annotated blank skeleton.
-- `principles/06-portability-test.md` — applies to agents too.
-- `validation/validate-agent.sh` — mechanical checks including the read-only enforcement rule.
+- `skills/meta/create-or-audit-agent/templates/agent.md` — annotated blank skeleton with frontmatter rules and the read-only-enforcement rationale.
+- `skills/meta/create-or-audit-agent/lib/validate.sh` — mechanical checks including the read-only enforcement rule.
+- Decision rule: agents = read-only analysis producing structured reports; skills = action-taking workflows. If the task writes files or changes state, build a skill (use `create-or-audit-skill`).
 
 ## Mode 1 — build a new agent
 
@@ -71,7 +70,7 @@ The body is the agent's **system prompt** — it starts cold, no conversation co
 ### Step 5: run the validator
 
 ```bash
-bash validation/validate-agent.sh .claude/agents/{agent-name}.md
+bash skills/meta/create-or-audit-agent/lib/validate.sh .claude/agents/{agent-name}.md
 ```
 
 Fix errors, especially: read-only-with-write-tools (hard error), angle brackets in description, name-matches-filename.
@@ -85,7 +84,7 @@ Invoke the agent manually with a representative query. The report should land in
 ### Step 1: structural
 
 ```bash
-bash validation/validate-agent.sh path/to/agent.md
+bash skills/meta/create-or-audit-agent/lib/validate.sh path/to/agent.md
 ```
 
 ### Step 2: five gates
@@ -123,7 +122,7 @@ bash validation/validate-agent.sh path/to/agent.md
 ## Verify
 
 ```bash
-bash validation/validate-agent.sh .claude/agents/{name}.md
+bash skills/meta/create-or-audit-agent/lib/validate.sh .claude/agents/{name}.md
 # Expected: VERDICT: PASS
 
 # Smoke: invoke the agent. Output should match the declared format.
