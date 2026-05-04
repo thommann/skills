@@ -1,0 +1,12 @@
+best practice
+clean code
+solid principle
+meaningful name
+descriptive variable
+proper error handling
+industry standard
+well.structured
+production.ready
+maintainable
+readable
+scalable

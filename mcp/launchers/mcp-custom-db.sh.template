@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# MCP launcher: <YOUR-DB-NAME> (custom-db template)
+#
+# Generic DB launcher template. Use for any DB that exposes:
+#   - A JDBC-ish connection string (ODBC, etc.)
+#   - A local CLI or driver that can be spawned as an MCP-over-stdio server
+#
+# Copy this file to `.claude/mcp/mcp-<your-db>.sh` and adapt.
+
+set -euo pipefail
+
+# --- Adapt ---
+DB_CONN_ENV="YOUR_DB_URL"    # name of the env var holding the connection string
+# -------------
+
+if ! command -v npx >/dev/null 2>&1; then
+  echo "<your-db> MCP unavailable: npx is not installed." >&2
+  exit 0
+fi
+
+if [[ -z "${!DB_CONN_ENV-}" ]]; then
+  echo "<your-db> MCP unavailable: set $DB_CONN_ENV." >&2
+  exit 0
+fi
+
+# Replace the package with the right adapter for your DB.
+# Examples:
+#   ClickHouse: @clickhouse/mcp-server
+#   DuckDB:     duckdb-mcp-server
+#   SQLite:     @modelcontextprotocol/server-sqlite
+#
+# Many project teams write a small shim that reads the env var and
+# configures the upstream server — do that here if needed.
+
+exec npx -y <your-mcp-package> "${!DB_CONN_ENV}"

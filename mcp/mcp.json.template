@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/mcp.json",
+  "//": "Single-file MCP config. Every server declared here is available to Claude Code when settings.json has enableAllProjectMcpServers: true. For env-sensitive or conditional setups, use the per-server launchers under mcp/launchers/ instead.",
+
+  "mcpServers": {
+    "//context7": "Library documentation lookup — version-pinned docs for supported libraries.",
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+
+    "//github": "GitHub API access. Requires a Personal Access Token with the scopes the project needs (repo, read:org, workflow).",
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+
+    "//playwright": "Browser automation for debugging / E2E. Starts a headless browser under the hood.",
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-playwright"]
+    },
+
+    "//fetch": "Generic HTTP fetch with allowlisting.",
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+
+    "//postgres": "Postgres read access (read-only queries). Connection string via env.",
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "${POSTGRES_URL}"],
+      "env": {
+        "POSTGRES_URL": "${POSTGRES_URL}"
+      }
+    }
+  }
+}

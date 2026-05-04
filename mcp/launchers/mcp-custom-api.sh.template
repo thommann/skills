@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# MCP launcher: <YOUR-SERVICE-NAME> (custom-api template)
+#
+# Copy this file to `.claude/mcp/mcp-<your-service>.sh` in your project and
+# adapt to wire Claude Code to your own API-backed MCP server.
+#
+# Patterns to pick from:
+#   (A) Generic OpenAPI → MCP adapter (e.g., `mcpinator`, `openapi-mcp-server`).
+#       Point it at your /openapi.json with auth headers.
+#   (B) A project-owned MCP server you've written (Node/Python/Go). Launch it
+#       directly.
+#
+# Set the env vars your service needs. Keep tokens in env only.
+
+set -euo pipefail
+
+# --- Adapt ---
+REQUIRED_ENV_VARS=("YOUR_API_URL" "YOUR_API_TOKEN")
+# -------------
+
+for var in "${REQUIRED_ENV_VARS[@]}"; do
+  if [[ -z "${!var-}" ]]; then
+    echo "<your-service> MCP unavailable: set $var." >&2
+    exit 0
+  fi
+done
+
+# Example (A) — OpenAPI-backed adapter. Uncomment and adapt:
+# exec npx -y openapi-mcp-server \
+#   --url "$YOUR_API_URL/openapi.json" \
+#   --header "Authorization: Bearer $YOUR_API_TOKEN"
+
+# Example (B) — project-owned server. Uncomment and adapt:
+# exec uv run --quiet your-mcp-server --config /path/to/config.yaml
+
+echo "<your-service> MCP launcher is a template — edit it before enabling." >&2
+exit 0
