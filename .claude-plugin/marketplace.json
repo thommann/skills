@@ -1,0 +1,14 @@
+{
+  "name": "thommann-skills",
+  "owner": {
+    "name": "Thomas Mannhart"
+  },
+  "plugins": [
+    {
+      "name": "thommann-skills",
+      "source": ".",
+      "description": "Portable Claude Code artifacts: 18 skills plus 5 read-only subagents.",
+      "homepage": "https://github.com/thommann/skills"
+    }
+  ]
+}

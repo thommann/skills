@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "thommann-skills",
+  "description": "Portable Claude Code artifacts: 18 skills (meta, workflow, documentation, planning) plus 5 read-only subagents.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Thomas Mannhart"
+  },
+  "homepage": "https://github.com/thommann/skills",
+  "skills": "./skills/",
+  "agents": [
+    "./agents/examples/code-reviewer.md",
+    "./agents/examples/docs-researcher.md",
+    "./agents/examples/impact-analyzer.md",
+    "./agents/examples/security-reviewer.md",
+    "./agents/examples/test-gap-analyzer.md"
+  ]
+}
